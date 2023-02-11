@@ -1,0 +1,53 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Team {
+  id           String    @id @default(uuid())
+  position     Int?
+  teamName     String    @unique
+  teamRecord   String
+  teamLogo     String
+  teamLinkName String?   @unique
+  teamColor    String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime? @updatedAt
+  player       Player[]
+
+  @@map("teams")
+}
+
+model Player {
+  id          String    @id @default(uuid())
+  playerPhoto String    @unique
+  playerRole  String
+  playerNick  String    @unique
+  playerName  String
+  teamId      String
+  mainRoaster Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime?
+
+  team  Team    @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  score Score[]
+
+  @@map("players")
+}
+
+model Score {
+  id        String   @id @default(uuid())
+  score     Int
+  playerId  String
+  player    Player   @relation(fields: [playerId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@map("scores")
+}
