@@ -1,19 +1,19 @@
-"use client";
-import { motion } from "framer-motion";
-import { ArrowFatDown, ArrowFatUp, Stop } from "phosphor-react";
-import { HTMLAttributes, ReactElement } from "react";
-import { Unbounded } from "@next/font/google";
+'use client'
+import { motion } from 'framer-motion'
+import { ArrowFatDown, ArrowFatUp, Stop } from 'phosphor-react'
+import { HTMLAttributes, ReactElement } from 'react'
+import { Unbounded } from '@next/font/google'
 
-const unbounded = Unbounded({ subsets: ["latin"] });
+const unbounded = Unbounded({ subsets: ['latin'] })
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   scores: {
-    score: number;
-  }[];
+    score: number
+  }[]
 }
 
 export function Score({ scores, ...rest }: Props) {
-  const evolution = scores[0].score - scores[1].score;
+  const evolution = scores[0].score - scores[1].score
   const arrow =
     evolution !== 0 ? (
       evolution > 0 ? (
@@ -31,7 +31,7 @@ export function Score({ scores, ...rest }: Props) {
       )
     ) : (
       <Stop weight="fill" size={28} className="animate-pulse text-purple-900" />
-    );
+    )
 
   return (
     <div {...rest}>
@@ -43,5 +43,5 @@ export function Score({ scores, ...rest }: Props) {
         {scores[0].score}
       </span>
     </div>
-  );
+  )
 }

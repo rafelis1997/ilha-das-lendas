@@ -1,6 +1,6 @@
-"use client";
+'use client'
 
-import { InstagramLogo, TwitchLogo, TwitterLogo } from "phosphor-react";
+import { InstagramLogo, TwitchLogo, TwitterLogo } from 'phosphor-react'
 
 export function Footer() {
   return (
@@ -18,5 +18,5 @@ export function Footer() {
         &copy; Todos os direitos reservados a {'"Baiano"'}
       </span>
     </div>
-  );
+  )
 }

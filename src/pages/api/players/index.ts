@@ -1,74 +1,74 @@
-import puppeteer from "puppeteer";
-import type { NextApiRequest, NextApiResponse } from "next";
-import { prisma } from "@/lib/prisma";
+import puppeteer from 'puppeteer'
+import type { NextApiRequest, NextApiResponse } from 'next'
+import { prisma } from '@/lib/prisma'
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.method !== "POST") {
-    return res.status(405).end();
+  if (req.method !== 'POST') {
+    return res.status(405).end()
   }
 
-  if (req.method === "POST") {
-    let teamsRaw = [];
-    let players = [];
+  if (req.method === 'POST') {
+    let teamsRaw = []
+    let players = []
 
     const pupp = async () => {
-      const browser = await puppeteer.launch();
-      const page = await browser.newPage();
+      const browser = await puppeteer.launch()
+      const page = await browser.newPage()
 
       await page.goto(
-        "https://lolesports.com/standings/cblol-brazil/cblol_2023_split_1/regular_season"
-      );
+        'https://lolesports.com/standings/cblol-brazil/cblol_2023_split_1/regular_season'
+      )
 
-      const teamSelector = ".ranking";
-      await page.waitForSelector(teamSelector);
+      const teamSelector = '.ranking'
+      await page.waitForSelector(teamSelector)
 
-      teamsRaw = await page.$$eval(".ranking", (element) =>
+      teamsRaw = await page.$$eval('.ranking', (element) =>
         element.map((team) => {
-          const teamName = team.querySelector(".name")?.innerHTML;
-          const teamLink = team.getAttribute("href");
+          const teamName = team.querySelector('.name')?.innerHTML
+          const teamLink = team.getAttribute('href')
 
           return {
             teamName,
             teamLink: `https://lolesports.com${teamLink}`,
-          };
+          }
         })
-      );
+      )
 
       for (let team of teamsRaw) {
-        await page.goto(team.teamLink);
-        await page.waitForSelector(".card");
+        await page.goto(team.teamLink)
+        await page.waitForSelector('.card')
 
-        players = await page.$$eval(".card", (element) =>
+        players = await page.$$eval('.card', (element) =>
           element.map((playerCard) => {
-            const playerInfo = playerCard.querySelector(".info");
-            const playerPhotoStyle = playerInfo?.getAttribute("style");
-            const playerPhotoLink = playerPhotoStyle?.split('"')[1];
-            const playerRoleSVg = playerInfo?.querySelector(".icon");
-            const tempDiv = document.createElement("div");
-            tempDiv.appendChild(playerRoleSVg as Element);
-            const playerRole = JSON.stringify(tempDiv.innerHTML);
+            const playerInfo = playerCard.querySelector('.info')
+            const playerPhotoStyle = playerInfo?.getAttribute('style')
+            const playerPhotoLink = playerPhotoStyle?.split('"')[1]
+            const playerRoleSVg = playerInfo?.querySelector('.icon')
+            const tempDiv = document.createElement('div')
+            tempDiv.appendChild(playerRoleSVg as Element)
+            const playerRole = JSON.stringify(tempDiv.innerHTML)
             const playerNick =
-              playerInfo?.querySelector(".summoner-name")?.innerHTML;
+              playerInfo?.querySelector('.summoner-name')?.innerHTML
             const playerName =
-              playerInfo?.querySelector(".real-name")?.innerHTML;
+              playerInfo?.querySelector('.real-name')?.innerHTML
 
             return {
               playerPhotoLink,
               playerRole,
               playerNick,
               playerName,
-            };
+            }
           })
-        );
+        )
 
         const teamData = await prisma.team.findUnique({
           where: {
             teamName: team.teamName,
           },
-        });
+        })
 
         for (let player of players) {
           if (player && player.playerName && player.playerNick && teamData) {
@@ -76,7 +76,7 @@ export default async function handler(
               where: {
                 playerNick: player.playerNick,
               },
-            });
+            })
 
             if (playerData) {
               await prisma.player.update({
@@ -90,7 +90,7 @@ export default async function handler(
                   playerNick: player.playerNick,
                   teamId: teamData?.id,
                 },
-              });
+              })
             } else {
               await prisma.player.create({
                 data: {
@@ -100,17 +100,17 @@ export default async function handler(
                   playerNick: player.playerNick,
                   teamId: teamData?.id,
                 },
-              });
+              })
             }
           }
         }
       }
 
-      await browser.close();
-    };
+      await browser.close()
+    }
 
-    await pupp();
+    await pupp()
 
-    res.status(201).json(players);
+    res.status(201).json(players)
   }
 }

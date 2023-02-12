@@ -1,14 +1,14 @@
-import { Footer } from "@/components/Footer";
-import { Header } from "@/components/Header";
-import { Inter, Unbounded } from "@next/font/google";
-import "./globals.css";
-import ReactQueryWrapper from "./reactQueryWrapper";
-const inter = Inter({ subsets: ["latin"] });
+import { Footer } from '@/components/Footer'
+import { Header } from '@/components/Header'
+import { Inter, Unbounded } from '@next/font/google'
+import './globals.css'
+import ReactQueryWrapper from './reactQueryWrapper'
+const inter = Inter({ subsets: ['latin'] })
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html
@@ -22,5 +22,5 @@ export default function RootLayout({
         <Footer />
       </body>
     </html>
-  );
+  )
 }

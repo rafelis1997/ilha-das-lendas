@@ -1,7 +1,7 @@
-"use client";
+'use client'
 
-import { TeamDto } from "@/Dtos/teamsDto";
-import Image from "next/image";
+import { TeamDto } from '@/Dtos/teamsDto'
+import Image from 'next/image'
 
 export function TeamsNavMenuList({ teamsList }: { teamsList: TeamDto[] }) {
   return (
@@ -19,25 +19,25 @@ export function TeamsNavMenuList({ teamsList }: { teamsList: TeamDto[] }) {
         scrollbar-thumb-rounded-md
       "
       onMouseEnter={(el) => {
-        el.currentTarget.style.overflowX = "scroll";
-        el.currentTarget.style.overflow = "overlay";
+        el.currentTarget.style.overflowX = 'scroll'
+        el.currentTarget.style.overflow = 'overlay'
       }}
       onMouseLeave={(el) => {
-        el.currentTarget.style.overflowX = "hidden";
+        el.currentTarget.style.overflowX = 'hidden'
       }}
       onFocus={(el) => {
-        el.currentTarget.style.overflowX = "scroll";
-        el.currentTarget.style.overflow = "overlay";
+        el.currentTarget.style.overflowX = 'scroll'
+        el.currentTarget.style.overflow = 'overlay'
         el.currentTarget.parentElement?.scrollTo({
           left: el.currentTarget.scrollLeft,
-        });
+        })
       }}
       onTouchStart={(el) => {
-        el.currentTarget.style.overflowX = "scroll";
-        el.currentTarget.style.overflow = "overlay";
+        el.currentTarget.style.overflowX = 'scroll'
+        el.currentTarget.style.overflow = 'overlay'
       }}
       onTouchEnd={(el) => {
-        el.currentTarget.style.overflowX = "hidden";
+        el.currentTarget.style.overflowX = 'hidden'
       }}
       id="scrollList"
     >
@@ -65,8 +65,10 @@ export function TeamsNavMenuList({ teamsList }: { teamsList: TeamDto[] }) {
               hover:bg-purple-700
             "
             onFocus={(el) => {
-              const scrollEl = document.getElementById("scrollList");
-              scrollEl?.scrollTo({ left: el.currentTarget.offsetLeft });
+              const scrollEl = document.getElementById('scrollList')
+              scrollEl?.scrollTo({
+                left: el.currentTarget.offsetLeft,
+              })
             }}
           >
             <Image
@@ -80,5 +82,5 @@ export function TeamsNavMenuList({ teamsList }: { teamsList: TeamDto[] }) {
         </li>
       ))}
     </ul>
-  );
+  )
 }

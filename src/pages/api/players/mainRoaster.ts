@@ -1,19 +1,19 @@
-import type { NextApiRequest, NextApiResponse } from "next";
-import { prisma } from "@/lib/prisma";
+import type { NextApiRequest, NextApiResponse } from 'next'
+import { prisma } from '@/lib/prisma'
 
 type RequestBody = {
-  playersId: string[];
-};
+  playersId: string[]
+}
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.method !== "POST") {
-    return res.status(405).end();
+  if (req.method !== 'POST') {
+    return res.status(405).end()
   }
 
-  const { playersId } = req.body as RequestBody;
+  const { playersId } = req.body as RequestBody
 
   if (playersId && playersId.length > 0) {
     for (let player of playersId) {
@@ -24,10 +24,10 @@ export default async function handler(
         data: {
           mainRoaster: true,
         },
-      });
+      })
     }
-    res.status(201).end();
+    res.status(201).end()
   }
 
-  res.status(501).json({ message: "Not able to set mainRoaster for players" });
+  res.status(501).json({ message: 'Not able to set mainRoaster for players' })
 }

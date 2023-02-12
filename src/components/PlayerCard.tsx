@@ -1,56 +1,56 @@
-"use client";
+'use client'
 
-import { useEffect, useRef } from "react";
-import Image from "next/image";
-import { motion } from "framer-motion";
+import { useEffect, useRef } from 'react'
+import Image from 'next/image'
+import { motion } from 'framer-motion'
 
-import { PlayerDto } from "@/Dtos/playerDto";
-import { Score } from "./Score";
+import { PlayerDto } from '@/Dtos/playerDto'
+import { Score } from './Score'
 
-export type COLORS = "red" | "orange" | "slate" | "sky" | "purple" | "green";
+export type COLORS = 'red' | 'orange' | 'slate' | 'sky' | 'purple' | 'green'
 
 const colorsVariants = {
   red: {
-    bg: "flex flex-col clip-path-cardClip relative w-full h-full justify-start items-center shadow-[inset_1px_0px_51px_3px_rgba(0,0,0,0.9)] bg-red-800",
+    bg: 'flex flex-col clip-path-cardClip relative w-full h-full justify-start items-center shadow-[inset_1px_0px_51px_3px_rgba(0,0,0,0.9)] bg-red-800',
     gradient:
-      "w-full absolute bg-gradient-to-b from-red-800/90 via-red-800/100 to-black bottom-0 pb-10 border-t-2 border-yellow-600",
+      'w-full absolute bg-gradient-to-b from-red-800/90 via-red-800/100 to-black bottom-0 pb-10 border-t-2 border-yellow-600',
   },
   orange: {
-    bg: "flex flex-col clip-path-cardClip relative w-full h-full justify-start items-center shadow-[inset_1px_0px_51px_3px_rgba(0,0,0,0.9)] bg-orange-800",
+    bg: 'flex flex-col clip-path-cardClip relative w-full h-full justify-start items-center shadow-[inset_1px_0px_51px_3px_rgba(0,0,0,0.9)] bg-orange-800',
     gradient:
-      "w-full absolute bg-gradient-to-b from-orange-800/90 via-orange-800/100 to-black bottom-0 pb-10 border-t-2 border-yellow-600",
+      'w-full absolute bg-gradient-to-b from-orange-800/90 via-orange-800/100 to-black bottom-0 pb-10 border-t-2 border-yellow-600',
   },
   slate: {
-    bg: "flex flex-col clip-path-cardClip relative w-full h-full justify-start items-center shadow-[inset_1px_0px_51px_3px_rgba(0,0,0,0.9)] bg-slate-400",
+    bg: 'flex flex-col clip-path-cardClip relative w-full h-full justify-start items-center shadow-[inset_1px_0px_51px_3px_rgba(0,0,0,0.9)] bg-slate-400',
     gradient:
-      "w-full absolute bg-gradient-to-b from-slate-400/90 via-slate-400/100 to-black bottom-0 pb-10 border-t-2 border-yellow-600",
+      'w-full absolute bg-gradient-to-b from-slate-400/90 via-slate-400/100 to-black bottom-0 pb-10 border-t-2 border-yellow-600',
   },
   sky: {
-    bg: "flex flex-col clip-path-cardClip relative w-full h-full justify-start items-center shadow-[inset_1px_0px_51px_3px_rgba(0,0,0,0.9)] bg-sky-600",
+    bg: 'flex flex-col clip-path-cardClip relative w-full h-full justify-start items-center shadow-[inset_1px_0px_51px_3px_rgba(0,0,0,0.9)] bg-sky-600',
     gradient:
-      "w-full absolute bg-gradient-to-b from-sky-600/90 via-sky-600/100 to-black bottom-0 pb-10 border-t-2 border-yellow-600",
+      'w-full absolute bg-gradient-to-b from-sky-600/90 via-sky-600/100 to-black bottom-0 pb-10 border-t-2 border-yellow-600',
   },
   purple: {
-    bg: "flex flex-col clip-path-cardClip relative w-full h-full justify-start items-center shadow-[inset_1px_0px_51px_3px_rgba(0,0,0,0.9)] bg-purple-900",
+    bg: 'flex flex-col clip-path-cardClip relative w-full h-full justify-start items-center shadow-[inset_1px_0px_51px_3px_rgba(0,0,0,0.9)] bg-purple-900',
     gradient:
-      "w-full absolute bg-gradient-to-b from-purple-900/90 via-purple-900/100 to-black bottom-0 pb-10 border-t-2 border-yellow-600",
+      'w-full absolute bg-gradient-to-b from-purple-900/90 via-purple-900/100 to-black bottom-0 pb-10 border-t-2 border-yellow-600',
   },
   green: {
-    bg: "flex flex-col clip-path-cardClip relative w-full h-full justify-start items-center shadow-[inset_1px_0px_51px_3px_rgba(0,0,0,0.9)] bg-green-800",
+    bg: 'flex flex-col clip-path-cardClip relative w-full h-full justify-start items-center shadow-[inset_1px_0px_51px_3px_rgba(0,0,0,0.9)] bg-green-800',
     gradient:
-      "w-full absolute bg-gradient-to-b from-green-800/90 via-green-800/100 to-black bottom-0 pb-10 border-t-2 border-yellow-600",
+      'w-full absolute bg-gradient-to-b from-green-800/90 via-green-800/100 to-black bottom-0 pb-10 border-t-2 border-yellow-600',
   },
-} as const;
+} as const
 
 const item = {
   hidden: { translateY: 100, scale: 0.5, opacity: 0, rotateY: 360 },
   visible: { translateY: 0, scale: 1, opacity: 1, rotateY: 0 },
-};
+}
 
 const draw = {
   zero: { pathLength: 0, opacity: 0 },
   full: (i: number) => {
-    const delay = 1 + i * 0.5;
+    const delay = 1 + i * 0.5
     return {
       pathLength: 1,
       opacity: 1,
@@ -58,32 +58,32 @@ const draw = {
         pathLength: {
           delay,
           duration: 5,
-          type: "spring",
+          type: 'spring',
           bounce: 0,
           repeat: Infinity,
         },
         opacity: { delay, duration: 0.5 },
       },
-    };
+    }
   },
-};
+}
 
 export function PlayerCard({
   player,
   teamLogo,
   teamColor,
 }: {
-  player: PlayerDto;
-  teamLogo: string;
-  teamColor: COLORS;
+  player: PlayerDto
+  teamLogo: string
+  teamColor: COLORS
 }) {
-  const svgRole = JSON.parse(player.playerRole);
-  const roleDiv = useRef<HTMLDivElement | null>(null);
+  const svgRole = JSON.parse(player.playerRole)
+  const roleDiv = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
-    const div = roleDiv.current;
-    if (div) div.innerHTML = svgRole;
-  });
+    const div = roleDiv.current
+    if (div) div.innerHTML = svgRole
+  })
 
   return (
     <motion.li
@@ -186,5 +186,5 @@ export function PlayerCard({
         </div>
       </div>
     </motion.li>
-  );
+  )
 }

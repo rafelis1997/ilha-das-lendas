@@ -1,8 +1,8 @@
-"use client";
-import Image from "next/image";
-import { UserSquare } from "phosphor-react";
+'use client'
+import Image from 'next/image'
+import { UserSquare } from 'phosphor-react'
 
-import HeroImage from "../assets/hero-img.jpg";
+import HeroImage from '../assets/hero-img.jpg'
 
 export default function Home() {
   return (
@@ -143,5 +143,5 @@ export default function Home() {
         </div>
       </div>
     </main>
-  );
+  )
 }

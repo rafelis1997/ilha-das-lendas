@@ -6,5 +6,5 @@ export default function Head() {
       <meta name="description" content="Ilha das lendas por Baiano" />
       <link rel="icon" href="/favicon.ico" />
     </>
-  );
+  )
 }

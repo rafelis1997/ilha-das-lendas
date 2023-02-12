@@ -1,10 +1,10 @@
-"use client";
-import { motion } from "framer-motion";
+'use client'
+import { motion } from 'framer-motion'
 
-import { Loading } from "@/components/Loading";
-import { PlayerCard } from "@/components/PlayerCard";
-import { useTeamData } from "@/hooks/useTeamData";
-import { TeamHeader } from "@/components/TeamHeader";
+import { Loading } from '@/components/Loading'
+import { PlayerCard } from '@/components/PlayerCard'
+import { useTeamData } from '@/hooks/useTeamData'
+import { TeamHeader } from '@/components/TeamHeader'
 
 const container = {
   hidden: {},
@@ -14,22 +14,22 @@ const container = {
       staggerChildren: 0.2,
     },
   },
-};
+}
 
 export default function TeamPage({ params }: { params: { teamName: string } }) {
-  const { teamName } = params;
+  const { teamName } = params
 
-  const { data, isLoading } = useTeamData(teamName);
+  const { data, isLoading } = useTeamData(teamName)
 
   const teamAverage =
     data?.player
       .filter((player) => player.mainRoaster !== false)
       .reduce((acc, player) => {
-        return acc + player.score[0].score;
-      }, 0)! / 5;
+        return acc + player.score[0].score
+      }, 0)! / 5
 
   if (isLoading) {
-    return <Loading />;
+    return <Loading />
   }
 
   return (
@@ -60,5 +60,5 @@ export default function TeamPage({ params }: { params: { teamName: string } }) {
           ))}
       </motion.ul>
     </div>
-  );
+  )
 }

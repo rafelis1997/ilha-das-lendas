@@ -1,5 +1,5 @@
-import Image from "next/image";
-import Logo from "../assets/logo.jpg";
+import Image from 'next/image'
+import Logo from '../assets/logo.jpg'
 
 export function Loading() {
   return (
@@ -27,5 +27,5 @@ export function Loading() {
         className="animate-pulse rounded-full"
       />
     </div>
-  );
+  )
 }

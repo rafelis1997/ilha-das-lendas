@@ -1,11 +1,11 @@
-"use client";
-import Image from "next/image";
-import { useQuery } from "react-query";
-import { motion } from "framer-motion";
+'use client'
+import Image from 'next/image'
+import { useQuery } from 'react-query'
+import { motion } from 'framer-motion'
 
-import { api } from "@/lib/axios";
-import { TeamDto } from "@/Dtos/teamsDto";
-import { Loading } from "@/components/Loading";
+import { api } from '@/lib/axios'
+import { TeamDto } from '@/Dtos/teamsDto'
+import { Loading } from '@/components/Loading'
 
 const container = {
   hidden: {},
@@ -15,21 +15,21 @@ const container = {
       staggerChildren: 0.1,
     },
   },
-};
+}
 
 const item = {
   hidden: { translateY: 100, scale: 0.5, opacity: 0 },
   visible: { translateY: 0, scale: 1, opacity: 1 },
-};
+}
 
 export default function Teams() {
-  const { data, isLoading } = useQuery("teams", async () => {
-    const { data } = await api.get("/teams");
-    return data as TeamDto[];
-  });
+  const { data, isLoading } = useQuery('teams', async () => {
+    const { data } = await api.get('/teams')
+    return data as TeamDto[]
+  })
 
   if (isLoading) {
-    return <Loading />;
+    return <Loading />
   }
 
   return (
@@ -71,8 +71,8 @@ export default function Teams() {
                   transition-all 
                   hover:scale-[1.05]
                 "
-                initial={{ backgroundSize: "120% 120%" }}
-                animate={{ backgroundSize: "250% 250%" }}
+                initial={{ backgroundSize: '120% 120%' }}
+                animate={{ backgroundSize: '250% 250%' }}
                 transition={{ repeat: Infinity, duration: 5 }}
               >
                 <span className="absolute left-3 top-3 text-lg font-bold">
@@ -91,5 +91,5 @@ export default function Teams() {
           ))}
       </motion.ul>
     </main>
-  );
+  )
 }

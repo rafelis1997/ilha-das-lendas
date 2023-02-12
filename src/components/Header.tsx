@@ -1,9 +1,9 @@
-"use client";
-import Image from "next/image";
-import Link from "next/link";
-import { House, Trophy } from "phosphor-react";
-import { SVGProps } from "react";
-import Logo from "../assets/logo.jpg";
+'use client'
+import Image from 'next/image'
+import Link from 'next/link'
+import { House, Trophy } from 'phosphor-react'
+import { SVGProps } from 'react'
+import Logo from '../assets/logo.jpg'
 
 export function Header(props: SVGProps<SVGElement>) {
   return (
@@ -94,5 +94,5 @@ export function Header(props: SVGProps<SVGElement>) {
         </li>
       </ul>
     </nav>
-  );
+  )
 }

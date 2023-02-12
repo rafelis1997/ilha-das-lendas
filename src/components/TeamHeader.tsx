@@ -1,18 +1,18 @@
-import { useTeamData } from "@/hooks/useTeamData";
-import { motion } from "framer-motion";
-import Image from "next/image";
+import { useTeamData } from '@/hooks/useTeamData'
+import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 const colorsVariants = {
-  red: "bg-red-800",
-  orange: "bg-orange-800",
-  slate: "bg-slate-400",
-  sky: "bg-sky-600",
-  purple: "bg-purple-900",
-  green: "bg-green-800",
-} as const;
+  red: 'bg-red-800',
+  orange: 'bg-orange-800',
+  slate: 'bg-slate-400',
+  sky: 'bg-sky-600',
+  purple: 'bg-purple-900',
+  green: 'bg-green-800',
+} as const
 
 export function TeamHeader({ teamName }: { teamName: string }) {
-  const { data: teamsData, isLoading } = useTeamData(teamName);
+  const { data: teamsData, isLoading } = useTeamData(teamName)
 
   return (
     <div
@@ -36,5 +36,5 @@ export function TeamHeader({ teamName }: { teamName: string }) {
         </h1>
       </motion.div>
     </div>
-  );
+  )
 }
