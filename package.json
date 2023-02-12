@@ -29,7 +29,10 @@
   "devDependencies": {
     "@svgr/webpack": "^6.5.1",
     "autoprefixer": "^10.4.13",
+    "eslint-config-prettier": "^8.6.0",
     "postcss": "^8.4.21",
+    "prettier": "^2.8.4",
+    "prettier-plugin-tailwindcss": "^0.2.2",
     "prisma": "^4.9.0",
     "tailwind-clip-path": "^1.0.0",
     "tailwind-scrollbar": "^2.1.0",
