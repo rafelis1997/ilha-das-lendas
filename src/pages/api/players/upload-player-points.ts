@@ -17,8 +17,8 @@ interface ResultsType {
   pontuacao: string
 }
 
-let fileName
-let filePath
+let fileName = ''
+let filePath = ''
 let results = [] as ResultsType[]
 
 const readFile = (
