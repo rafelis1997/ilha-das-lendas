@@ -14,7 +14,7 @@ export const config = {
 
 interface ResultsType {
   nick: string
-  pontuacao: string
+  score: string
 }
 
 let fileName = ''
@@ -73,7 +73,7 @@ const handler: NextApiHandler = async (req, res) => {
         if (player) {
           await prisma.score.create({
             data: {
-              score: Number(result.pontuacao) as number,
+              score: Number(result.score) as number,
               playerId: player.id,
             },
           })
