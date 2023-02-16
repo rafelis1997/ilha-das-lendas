@@ -56,39 +56,40 @@ const handler: NextApiHandler = async (req, res) => {
   } catch (error) {
     await fsPromise.mkdir(path.join(process.cwd(), '/tmp'))
   }
+
   await readFile(req, true)
 
-  fs.createReadStream(filePath + '/' + fileName)
-    .pipe(csvParser({}))
-    .on('data', (data: any) => results.push(data))
-    .on('end', async () => {
-      for (let result of results) {
-        console.log(result)
-        const player = await prisma.player.findUnique({
-          where: {
-            playerNick: result.nick,
-          },
-        })
-
-        if (player) {
-          await prisma.score.create({
-            data: {
-              score: Number(result.score) as number,
-              playerId: player.id,
+  if (fs.existsSync(filePath + '/' + fileName)) {
+    fs.createReadStream(filePath + '/' + fileName)
+      .pipe(csvParser({}))
+      .on('data', (data: any) => results.push(data))
+      .on('end', async () => {
+        for (let result of results) {
+          console.log(result)
+          const player = await prisma.player.findUnique({
+            where: {
+              playerNick: result.nick,
             },
           })
-        }
-      }
 
-      if (fs.existsSync(filePath + '/' + fileName)) {
+          if (player) {
+            await prisma.score.create({
+              data: {
+                score: Number(result.score) as number,
+                playerId: player.id,
+              },
+            })
+          }
+        }
+
         fs.unlink(filePath + '/' + fileName, (err) => {
           if (err) {
             console.log(err)
           }
           console.log('deleted')
         })
-      }
-    })
+      })
+  }
 
   res.status(200).json('Points parsed!')
 }
