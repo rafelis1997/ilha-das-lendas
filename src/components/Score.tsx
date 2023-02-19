@@ -20,28 +20,39 @@ export function Score({ scores, ...rest }: Props) {
         <ArrowFatUp
           weight="fill"
           size={28}
-          className="animate-bounce text-blue-500"
+          className="animate-bounce text-green-400"
         />
       ) : (
         <ArrowFatDown
           weight="fill"
           size={28}
-          className="animate-bounce text-red-500"
+          className="animate-bounce text-yellow-300"
         />
       )
     ) : (
-      <Stop weight="fill" size={28} className="animate-pulse text-purple-900" />
+      <Stop weight="fill" size={28} className="animate-pulse text-purple-400" />
     )
 
   return (
     <div {...rest}>
       {arrow}
-      <span
+      <svg
+        viewBox="-1 -25 45 35"
+        className="flex w-[60px] justify-center bg-transparent text-center md:w-[70px]"
+      >
+        <text
+          style={unbounded.style}
+          className={`bg-transparent fill-slate-100 text-center text-lg font-extrabold uppercase [filter:drop-shadow(2px_2px_0px_theme(colors.lime.500))] md:text-2xl md:text-2xl`}
+        >
+          {scores[0].score}
+        </text>
+      </svg>
+      {/* <span
         className="text-4xl font-extrabold text-slate-100"
         style={unbounded.style}
       >
         {scores[0].score}
-      </span>
+      </span> */}
     </div>
   )
 }

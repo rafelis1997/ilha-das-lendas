@@ -35,6 +35,7 @@ export function Header(props: SVGProps<SVGElement>) {
         md:row-end-1 
         md:flex-col-reverse 
         md:border-r-2
+        md:border-t-0
       "
     >
       <div className="absolute bottom-10 h-20 w-20 overflow-hidden rounded-full">

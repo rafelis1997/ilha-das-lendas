@@ -34,7 +34,7 @@ export default function Teams() {
 
   return (
     <main className=" flex h-full min-h-screen w-full flex-col">
-      <div className="flex w-full items-center justify-start gap-8 bg-purple-900 py-4 px-16 text-2xl">
+      <div className="flex w-full items-center justify-start gap-8 bg-lime-500 py-4 px-16 text-2xl">
         <Image
           src="https://am-a.akamaihd.net/image?resize=120:&amp;f=http%3A%2F%2Fstatic.lolesports.com%2Fleagues%2Fcblol-logo-symbol-offwhite.png"
           alt="logo cblol"
@@ -45,7 +45,9 @@ export default function Teams() {
       </div>
 
       <motion.ul
-        className="mx-auto flex flex-1 flex-wrap justify-center gap-2 bg-slate-200 px-6 pb-16 pt-12"
+        className="mx-auto flex flex-1 flex-wrap justify-center gap-2 bg-[radial-gradient(ellipse_at_bottom_center,_var(--tw-gradient-stops))] from-purple-400 to-purple-600 px-6 pb-16
+        pt-12
+        "
         variants={container}
         initial="hidden"
         animate="visible"
@@ -56,7 +58,8 @@ export default function Teams() {
               <motion.a
                 href={`/teams/${team.teamLinkName}`}
                 className="
-                  relative 
+                  relative
+                  m-2
                   flex h-72 
                   w-52 
                   flex-col 
@@ -64,12 +67,17 @@ export default function Teams() {
                   justify-center 
                   gap-6 
                   rounded-md 
-                  bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] 
+                  bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))]
                   from-purple-900 
                   to-blue-900 
                   text-slate-50 
+                  shadow-[4px_4px_1px_lime-500] 
+                  shadow-lime-500
+                  drop-shadow-xl
                   transition-all 
                   hover:scale-[1.05]
+                  hover:shadow-[8px_8px_1px_lime-500]
+                  hover:shadow-lime-500
                 "
                 initial={{ backgroundSize: '120% 120%' }}
                 animate={{ backgroundSize: '250% 250%' }}
@@ -84,7 +92,9 @@ export default function Teams() {
                   width={120}
                   height={120}
                 />
-                <span className="font-bold">{team.teamName}</span>
+                <span className="max-w-[120px] text-center text-2xl font-bold">
+                  {team.teamName}
+                </span>
                 <span className="text-xl font-bold">{team.teamRecord}</span>
               </motion.a>
             </motion.li>

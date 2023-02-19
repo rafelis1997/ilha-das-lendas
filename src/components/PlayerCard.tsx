@@ -6,6 +6,13 @@ import { motion } from 'framer-motion'
 
 import { PlayerDto } from '@/Dtos/playerDto'
 import { Score } from './Score'
+import { Unbounded } from '@next/font/google'
+
+const unbounded = Unbounded({
+  preload: true,
+  variable: '--font-unbounded',
+  subsets: ['latin'],
+})
 
 export type COLORS = 'red' | 'orange' | 'slate' | 'sky' | 'purple' | 'green'
 
@@ -88,7 +95,7 @@ export function PlayerCard({
   return (
     <motion.li
       key={player.id}
-      className="relative flex h-[23rem] w-60 flex-col flex-wrap items-center"
+      className="relative flex h-[20rem] w-48 flex-col flex-wrap items-center md:h-[23rem] md:w-60"
       variants={item}
       transition={{ duration: 1 }}
     >
@@ -123,7 +130,7 @@ export function PlayerCard({
       >
         <Score
           scores={player.score}
-          className="absolute left-9 top-14 z-20 flex flex-col-reverse items-center gap-1 leading-none"
+          className={`absolute left-6 top-10 z-20 flex flex-col-reverse items-center leading-none md:left-8 md:top-16 ${unbounded.className} text-shadow-lg`}
         />
 
         <Image
@@ -156,7 +163,7 @@ export function PlayerCard({
           width={402}
           height={329}
           alt={player?.playerNick}
-          className="mt-24 aspect-auto max-h-[175px] min-h-[170px] object-contain"
+          className="mt-16 aspect-auto max-h-[175px] min-h-[170px] object-contain md:mt-24"
         />
         <div
           className={`${

@@ -5,6 +5,9 @@ module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      filter: {
+        'text': "drop-shadow(3px 3px 3px var(--colors-lime-500))",
+      },
       textShadow: {
         sm: '0 1px 2px rgb(0,0,0,0.4)',
         DEFAULT: '0 2px 4px rgb(0,0,0,0.4)',

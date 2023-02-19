@@ -15,7 +15,7 @@ export function TeamsNavMenuList({ teamsList }: { teamsList: TeamDto[] }) {
         ease-in-out 
         scrollbar-thin 
         scrollbar-track-transparent 
-        scrollbar-thumb-slate-900 
+        scrollbar-thumb-slate-200 
         scrollbar-thumb-rounded-md
       "
       onMouseEnter={(el) => {
@@ -42,14 +42,14 @@ export function TeamsNavMenuList({ teamsList }: { teamsList: TeamDto[] }) {
       id="scrollList"
     >
       {teamsList?.map((team) => (
-        <li key={team.id} className="snap-center p-0">
+        <li key={team.id} className="min-w-52 w-full snap-center p-0">
           <a
             href={`/teams/${team.teamLinkName}`}
             className="
-              relative 
+              relative
               flex 
-              h-36 
-              w-52 
+              h-24
+              min-w-[160px] 
               flex-col 
               items-center 
               justify-center 
@@ -74,10 +74,10 @@ export function TeamsNavMenuList({ teamsList }: { teamsList: TeamDto[] }) {
             <Image
               src={team.teamLogo}
               alt={team.teamLinkName}
-              width={80}
-              height={80}
+              width={40}
+              height={40}
             />
-            <span className="font-bold">{team.teamName}</span>
+            <span className="font-bold uppercase">{team.teamLinkName}</span>
           </a>
         </li>
       ))}
