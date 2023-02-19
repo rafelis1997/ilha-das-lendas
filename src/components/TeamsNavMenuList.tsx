@@ -49,7 +49,7 @@ export function TeamsNavMenuList({ teamsList }: { teamsList: TeamDto[] }) {
               relative
               flex 
               h-24
-              min-w-[160px] 
+              min-w-[200px] 
               flex-col 
               items-center 
               justify-center 

@@ -146,7 +146,7 @@ export function PlayerCard({
           height={60}
           src="https://am-a.akamaihd.net/image?resize=60:&amp;f=http%3A%2F%2Fstatic.lolesports.com%2Fleagues%2Fcblol-logo-symbol-offwhite.png"
           alt=""
-          className="absolute mt-6 motion-safe:animate-pulse"
+          className="absolute mt-6 h-[40px] w-[40px] motion-safe:animate-pulse md:h-[60px] md:w-[60px]"
         />
         <svg
           xmlns="http://www.w3.org/2000/svg"
