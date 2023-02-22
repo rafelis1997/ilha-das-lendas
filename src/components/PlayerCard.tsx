@@ -161,7 +161,7 @@ export function PlayerCard({
       key={player.id}
       className={`flex flex-col flex-wrap items-center ${
         isSelected && 'w-full'
-      }`}
+      } justify-center`}
       variants={item}
     >
       <motion.div
@@ -280,7 +280,7 @@ export function PlayerCard({
         </div>
       </motion.div>
       {isSelected && (
-        <div ref={chartRef} className="h-full w-full">
+        <div ref={chartRef} className="flex h-full w-full justify-center">
           <PlayerScoreChart
             playerNick={player?.playerNick}
             playerScores={player?.score.map((score) => score.score)}
