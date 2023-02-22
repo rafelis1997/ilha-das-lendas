@@ -27,7 +27,6 @@ export default async function handler(
                 orderBy: {
                   createdAt: 'desc',
                 },
-                take: 2,
                 select: {
                   score: true,
                 },
