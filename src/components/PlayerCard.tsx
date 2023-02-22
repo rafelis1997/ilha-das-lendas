@@ -135,7 +135,7 @@ export function PlayerCard({
   const svgRole = JSON.parse(player.playerRole)
   const roleDiv = useRef<HTMLDivElement | null>(null)
 
-  const chartRef = useRef(null)
+  const chartRef = useRef<HTMLDivElement | null>(null)
 
   function handlePlayerCardClick(
     event: MouseEvent<HTMLElement>,
