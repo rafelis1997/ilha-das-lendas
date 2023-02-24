@@ -11,7 +11,7 @@ export default async function TeamsNavMenu() {
   const data = await getTeamsData()
 
   return (
-    <div className="relative flex flex-col bg-slate-200">
+    <div className="relative flex flex-col bg-violet-800">
       <TeamsNavMenuList teamsList={data} />
     </div>
   )

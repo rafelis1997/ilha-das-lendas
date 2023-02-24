@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .grainy {
+    position: relative;
+    background-image: radial-gradient(
+      circle at right bottom,
+      theme(colors.violet.900),
+      theme(colors.violet.600),
+      transparent
+    );
+    border-bottom: 5px solid theme(colors.lime.500);
+  }
+
+  .grainy::before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.2;
+    background-image: url('https://cdn.beacons.ai/user_content/axaWeR0asKVRTHo2uxedx5HnC8R2/backgrounds/home/background_ilhadaslendas.png?t=1674843222900');
+    background-repeat: no-repeat;
+    background-position: 10% 23%;
+    background-size: cover;
+  }
+}

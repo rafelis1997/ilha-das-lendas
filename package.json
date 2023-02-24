@@ -33,8 +33,13 @@
   },
   "devDependencies": {
     "@svgr/webpack": "^6.5.1",
+    "@types/file-saver": "^2.0.5",
     "autoprefixer": "^10.4.13",
+    "date-fns": "^2.29.3",
+    "dom-to-image-more": "^2.15.0",
     "eslint-config-prettier": "^8.6.0",
+    "file-saver": "^2.0.5",
+    "html-to-image": "^1.11.11",
     "postcss": "^8.4.21",
     "prettier": "^2.8.4",
     "prettier-plugin-tailwindcss": "^0.2.2",

@@ -1,8 +1,8 @@
 'use client'
+import { Hero } from '@/components/Hero'
+import { Unbounded } from '@next/font/google'
 import Image from 'next/image'
 import { UserSquare } from 'phosphor-react'
-
-import HeroImage from '../assets/hero-img.jpg'
 
 export default function Home() {
   return (
@@ -26,64 +26,7 @@ export default function Home() {
       md:row-start-1 
       md:row-end-1"
     >
-      <div
-        className="
-          relative
-          flex 
-          h-screen
-          w-full
-          flex-col-reverse 
-          items-center 
-          justify-center 
-          gap-6 
-          bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] 
-          from-purple-400 
-          to-slate-100 
-          px-12 
-          md:flex-row 
-          md:items-center 
-          md:justify-between 
-          md:px-36
-        "
-      >
-        <div className="flex flex-col items-center gap-6">
-          <div className="flex flex-col gap-6 bg-gradient-to-b from-purple-800 to-blue-800 bg-clip-text text-center">
-            <h1 className="text-5xl font-extrabold text-transparent md:text-7xl">
-              SÓ AGRADECE!
-            </h1>
-            <h1 className="text-5xl font-extrabold md:text-7xl">🙏</h1>
-          </div>
-          <span
-            className="
-              w-[26rem] 
-              bg-gradient-to-b 
-              from-purple-800 
-              to-blue-800 
-              bg-clip-text 
-              text-center 
-              text-3xl 
-              font-extrabold 
-              text-slate-100 
-              md:text-5xl
-            "
-          >
-            Aqui apenas a
-            <span className="text-center text-3xl font-extrabold text-transparent md:text-5xl">
-              {' "true" da "true"'}
-            </span>
-            é falada, nada além disso!
-          </span>
-        </div>
-        <div className="h-full max-h-[350px] w-full max-w-[600px] overflow-hidden rounded-3xl md:max-h-[500px] md:max-w-[800px]">
-          <Image
-            src={HeroImage}
-            alt="as lendas do ilha das lendas"
-            width={1000}
-            height={1000}
-            className="h-full w-full object-cover object-[100%_0%]"
-          />
-        </div>
-      </div>
+      <Hero />
       <div className="flex h-fit w-full flex-col items-center gap-16 px-8 pb-12">
         <div className="flex w-full max-w-7xl flex-col-reverse items-center justify-between gap-6 md:flex-row">
           <div className="flex h-fit w-96 flex-col items-center gap-16">

@@ -22,12 +22,10 @@ export function Header(props: SVGProps<SVGElement>) {
         justify-center 
         border-t-2 
         border-purple-600 
-        bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] 
-        from-slate-100 
-        to-slate-200 
+        bg-violet-900
         px-2 
         py-10 
-        drop-shadow-2xl 
+        shadow-xl 
         md:top-0 
         md:col-start-1 
         md:col-end-1 
@@ -61,7 +59,7 @@ export function Header(props: SVGProps<SVGElement>) {
               justify-center 
               rounded-md 
               p-2 
-              text-purple-600 
+              text-slate-100 
               transition-all 
               hover:bg-purple-600 
               hover:text-purple-100"
@@ -82,7 +80,7 @@ export function Header(props: SVGProps<SVGElement>) {
                 items-center 
                 justify-center 
                 rounded-md p-2 
-                text-purple-600 
+                text-slate-100
                 transition-all 
                 hover:bg-purple-600 
                 hover:text-purple-100

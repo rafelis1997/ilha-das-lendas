@@ -1,5 +1,5 @@
 'use client'
-import { useState, MouseEvent } from 'react'
+import { useState, MouseEvent, useCallback, useRef } from 'react'
 import { motion } from 'framer-motion'
 
 import { Loading } from '@/components/Loading'
@@ -8,6 +8,8 @@ import { useTeamData } from '@/hooks/useTeamData'
 import { TeamHeader } from '@/components/TeamHeader'
 import { TeamStats } from '@/components/TeamStats'
 import { PlayerDto } from '@/Dtos/playerDto'
+import { format } from 'date-fns'
+import { toPng } from 'html-to-image'
 
 const container = {
   hidden: {},
@@ -24,6 +26,27 @@ export default function TeamPage({ params }: { params: { teamName: string } }) {
   const { teamName } = params
 
   const { data, isLoading } = useTeamData(teamName)
+
+  // const ref = useRef<HTMLDivElement>(null)
+
+  // const getFileName = (fileType: string) =>
+  //   `${format(new Date(), "'playerCard-'HH-mm-ss")}.${fileType}`
+
+  // const downloadPng = useCallback(() => {
+  //   if (ref.current === null) {
+  //     return
+  //   }
+  //   toPng(ref.current, { cacheBust: true })
+  //     .then((dataUrl) => {
+  //       const link = document.createElement('a')
+  //       link.download = `${getFileName('png')}`
+  //       link.href = dataUrl
+  //       link.click()
+  //     })
+  //     .catch((err) => {
+  //       console.log(err)
+  //     })
+  // }, [ref])
 
   const teamAverage =
     data?.player
@@ -60,14 +83,24 @@ export default function TeamPage({ params }: { params: { teamName: string } }) {
           {data?.player
             .filter((player) => player.mainRoaster !== false)
             .map((player) => (
-              <PlayerCard
-                player={player}
-                key={player.id}
-                teamLogo={data.teamLogo}
-                teamColor={data.teamColor}
-                isSelected={player.playerNick === selectedPlayer?.playerNick}
-                setPlayerSelection={handleSetSelectedPlayer}
-              />
+              <>
+                <PlayerCard
+                  player={player}
+                  key={player.id}
+                  teamLogo={data.teamLogo}
+                  teamColor={data.teamColor}
+                  isSelected={player.playerNick === selectedPlayer?.playerNick}
+                  setPlayerSelection={handleSetSelectedPlayer}
+                  // ref={
+                  //   player.playerNick === selectedPlayer?.playerNick
+                  //     ? ref
+                  //     : null
+                  // }
+                />
+                {/* <button type="button" onClick={downloadPng}>
+                  Save PNG
+                </button> */}
+              </>
             ))}
         </motion.ul>
       </div>
