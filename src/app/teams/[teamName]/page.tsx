@@ -67,7 +67,7 @@ export default function TeamPage({ params }: { params: { teamName: string } }) {
     <div className={`flex h-full min-h-screen flex-col pb-8`}>
       <TeamHeader teamName={teamName} />
 
-      <div className="box-content flex w-full flex-col py-12 lg:flex-row">
+      <div className="box-content flex w-full flex-col py-12 xl:flex-row">
         <TeamStats
           teamAverage={teamAverage}
           teamPosition={data!.position}
@@ -83,24 +83,14 @@ export default function TeamPage({ params }: { params: { teamName: string } }) {
           {data?.player
             .filter((player) => player.mainRoaster !== false)
             .map((player) => (
-              <>
-                <PlayerCard
-                  player={player}
-                  key={player.id}
-                  teamLogo={data.teamLogo}
-                  teamColor={data.teamColor}
-                  isSelected={player.playerNick === selectedPlayer?.playerNick}
-                  setPlayerSelection={handleSetSelectedPlayer}
-                  // ref={
-                  //   player.playerNick === selectedPlayer?.playerNick
-                  //     ? ref
-                  //     : null
-                  // }
-                />
-                {/* <button type="button" onClick={downloadPng}>
-                  Save PNG
-                </button> */}
-              </>
+              <PlayerCard
+                player={player}
+                key={player.id}
+                teamLogo={data.teamLogo}
+                teamColor={data.teamColor}
+                isSelected={player.playerNick === selectedPlayer?.playerNick}
+                setPlayerSelection={handleSetSelectedPlayer}
+              />
             ))}
         </motion.ul>
       </div>

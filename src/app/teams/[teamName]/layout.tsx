@@ -11,9 +11,7 @@ export default async function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <div
-      className={`flex h-full min-h-screen flex-col bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-slate-100 to-slate-200 `}
-    >
+    <div className={`flex h-full min-h-screen flex-col`}>
       <Suspense>
         <TeamsNavMenu />
       </Suspense>

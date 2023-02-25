@@ -55,14 +55,14 @@ export function TeamsNavMenuList({ teamsList }: { teamsList: TeamDto[] }) {
               justify-center 
               gap-1 
               border-r-2 
-              border-purple-600 
-              bg-purple-900 
+              border-violet-600 
+              bg-violet-900 
               text-slate-50 
               outline-none 
               transition-all 
               focus-visible:border-4 
               focus-visible:border-purple-300 
-              hover:bg-purple-700
+              hover:bg-violet-700
             "
             onFocus={(el) => {
               const scrollEl = document.getElementById('scrollList')

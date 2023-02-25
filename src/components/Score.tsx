@@ -36,23 +36,14 @@ export function Score({ scores, ...rest }: Props) {
   return (
     <div {...rest}>
       {arrow}
-      <svg
-        viewBox="-1 -25 45 35"
-        className="flex w-[60px] justify-center bg-transparent text-center md:w-[70px]"
-      >
-        <text
+      <div className="flex w-[60px] justify-center bg-transparent text-center md:w-[70px]">
+        <h1
           style={unbounded.style}
-          className={`bg-transparent fill-slate-100 text-center text-lg font-extrabold uppercase [filter:drop-shadow(2px_2px_0px_theme(colors.lime.500))] md:text-2xl md:text-2xl`}
+          className={`bg-transparent text-center text-xl font-extrabold uppercase text-slate-100 [filter:drop-shadow(2px_2px_0px_theme(colors.lime.500))] md:text-4xl`}
         >
           {scores[0].score}
-        </text>
-      </svg>
-      {/* <span
-        className="text-4xl font-extrabold text-slate-100"
-        style={unbounded.style}
-      >
-        {scores[0].score}
-      </span> */}
+        </h1>
+      </div>
     </div>
   )
 }

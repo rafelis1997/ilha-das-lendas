@@ -36,16 +36,16 @@ export default function Teams() {
     <main className=" flex h-full min-h-screen w-full flex-col">
       <div className="flex w-full items-center justify-start gap-8 bg-lime-500 py-4 px-16 text-2xl">
         <Image
-          src="https://am-a.akamaihd.net/image?resize=120:&amp;f=http%3A%2F%2Fstatic.lolesports.com%2Fleagues%2Fcblol-logo-symbol-offwhite.png"
+          src="https://am-a.akamaihd.net/image?resize=120:&amp;f=http%3A%2F%2Fstatic.lolesports.com%2Fleagues%2Fcblol-logo-symbol-black.png"
           alt="logo cblol"
           width={80}
           height={80}
         />
-        <h1 className="font-extrabold text-[#ebefe4]">CBLOL</h1>
+        <h1 className="text-3xl font-extrabold text-purple-900">CBLOL</h1>
       </div>
 
       <motion.ul
-        className="mx-auto flex flex-1 flex-wrap justify-center gap-2 bg-[radial-gradient(ellipse_at_bottom_center,_var(--tw-gradient-stops))] from-purple-400 to-purple-600 px-6 pb-16
+        className="mx-auto flex flex-1 flex-wrap justify-center gap-2 px-6 pb-16
         pt-12
         "
         variants={container}
@@ -66,10 +66,9 @@ export default function Teams() {
                   items-center 
                   justify-center 
                   gap-6 
-                  rounded-md 
                   bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))]
-                  from-purple-900 
-                  to-blue-900 
+                  from-violet-600 
+                  to-blue-600 
                   text-slate-50 
                   shadow-[4px_4px_1px_lime-500] 
                   shadow-lime-500
