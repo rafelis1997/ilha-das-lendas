@@ -22,7 +22,7 @@ export function Header(props: SVGProps<SVGElement>) {
         justify-center 
         border-t-2 
         border-purple-600 
-        bg-violet-900
+        bg-violet-700
         px-2 
         py-10 
         shadow-xl 
@@ -61,7 +61,7 @@ export function Header(props: SVGProps<SVGElement>) {
               p-2 
               text-slate-100 
               transition-all 
-              hover:bg-purple-600 
+              hover:bg-purple-500 
               hover:text-purple-100"
             >
               <House size={24} weight="fill" />
@@ -82,7 +82,7 @@ export function Header(props: SVGProps<SVGElement>) {
                 rounded-md p-2 
                 text-slate-100
                 transition-all 
-                hover:bg-purple-600 
+                hover:bg-purple-500 
                 hover:text-purple-100
               "
             >

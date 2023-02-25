@@ -5,6 +5,12 @@ module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      dropShadow: {
+        '3xl': '0 35px 35px rgba(0, 0, 0, 0.25)',
+        '4xl': [
+            '0 10px 50px rgba(0, 0, 0, 0.65)'
+        ]
+      },
       filter: {
         'text': "drop-shadow(3px 3px 3px var(--colors-lime-500))",
       },

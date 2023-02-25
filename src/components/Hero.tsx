@@ -1,5 +1,6 @@
 import { Unbounded } from '@next/font/google'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 
 import Card1 from '../assets/playerCard1.png'
 import Card2 from '../assets/playerCard2.png'
@@ -33,7 +34,11 @@ export function Hero() {
           2xl:px-64 
         "
     >
-      <div className="-z-1 absolute mt-96 grid h-full w-auto -rotate-3 grid-cols-2 gap-x-24 gap-y-8 opacity-100 xl:opacity-100 2xl:mt-36 [&>*:nth-child(even)]:relative [&>*:nth-child(even)]:top-16">
+      <motion.div
+        className="-z-1 absolute mt-96 grid h-full w-auto -rotate-3 grid-cols-2 gap-x-24 gap-y-8 opacity-100 xl:opacity-100 2xl:mt-36 [&>*:nth-child(even)]:relative [&>*:nth-child(even)]:top-16"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+      >
         <Image
           src={Card1}
           alt="as lendas do ilha das lendas"
@@ -76,15 +81,20 @@ export function Hero() {
           height={1000}
           className="w-[230px] object-contain"
         />
-      </div>
+      </motion.div>
       <div className=" z-10 flex w-full flex-col items-end justify-start gap-6">
-        <div className="mt-16 w-full max-w-[500px] text-lime-500">
+        <motion.div
+          className="mt-16 w-full max-w-[500px] text-lime-500"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+        >
           <h1
             className={`text-right text-7xl font-extrabold 2xl:text-8xl ${unbounded.className}`}
           >
             ILHA DAS LENDAS
           </h1>
-        </div>
+        </motion.div>
         <div
           className={`
               ${unbounded.className} 
