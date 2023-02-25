@@ -53,6 +53,9 @@ const socialAnim = {
 const socialAnimItems = {
   hidden: {
     opacity: 0,
+    transition: {
+      duration: 0.05,
+    },
   },
   visible: {
     opacity: 1,
