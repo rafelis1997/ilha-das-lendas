@@ -57,13 +57,13 @@ export default function Home() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1, transition: { delay: 0.3 } }}
           >
-            <span className="w-[26rem] text-center text-3xl font-extrabold text-slate-100 md:text-5xl">
+            <span className="w-[26rem] text-center text-2xl font-extrabold text-slate-100 md:text-5xl">
               Comprometidos em salvar o cenário brasileiro de League of Legends
             </span>
           </motion.div>
 
           <motion.div
-            className="relative flex w-full flex-1 justify-center"
+            className="relative flex w-full flex-1 justify-center px-6 lg:px-0"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1, transition: { delay: 0.2 } }}
           >
@@ -102,7 +102,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="my-16 flex h-fit w-full flex-col items-center gap-24 px-12 md:my-32">
+      <div className="my-16 flex h-fit w-full flex-col items-center gap-24 px-8 md:my-32">
         <motion.div
           className="relative flex h-fit w-fit "
           initial={{ opacity: 0 }}

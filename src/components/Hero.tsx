@@ -90,7 +90,7 @@ export function Hero() {
           transition={{ delay: 0.5 }}
         >
           <h1
-            className={`text-right text-7xl font-extrabold 2xl:text-8xl ${unbounded.className}`}
+            className={`text-right text-6xl font-extrabold 2xl:text-8xl ${unbounded.className}`}
           >
             ILHA DAS LENDAS
           </h1>
@@ -98,7 +98,7 @@ export function Hero() {
         <div
           className={`
               ${unbounded.className} 
-              mt-16 
+              mt-4 
               mr-0 
               flex
               w-full
