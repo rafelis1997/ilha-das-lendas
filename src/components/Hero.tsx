@@ -82,6 +82,7 @@ export function Hero() {
           className="w-[230px] object-contain"
         />
       </motion.div>
+
       <div className=" z-10 flex w-full flex-col items-end justify-start gap-6">
         <motion.div
           className="mt-16 w-full max-w-[500px] text-lime-500"
@@ -90,7 +91,7 @@ export function Hero() {
           transition={{ delay: 0.5 }}
         >
           <h1
-            className={`text-right text-6xl font-extrabold 2xl:text-8xl ${unbounded.className}`}
+            className={`text-right text-6xl font-extrabold 2xl:text-8xl ${unbounded.className} drop-shadow-[4px_4px_0px_theme(colors.violet.900)]`}
           >
             ILHA DAS LENDAS
           </h1>
@@ -118,6 +119,7 @@ export function Hero() {
                 text-3xl
                 font-bold 
                 text-slate-100
+                drop-shadow-2xl 
               `}
           >
             Aqui apenas a
