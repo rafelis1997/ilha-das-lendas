@@ -24,7 +24,7 @@ const variants = {
   hidden: { opacity: 0 },
 }
 
-const MotionImage = motion(Image, { forwardMotionProps: true })
+const MotionImage = motion(Image)
 
 export default function Home() {
   return (

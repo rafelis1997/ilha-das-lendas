@@ -3,12 +3,10 @@
 import {
   useEffect,
   useRef,
-  HTMLAttributes,
   MouseEvent,
-  MutableRefObject,
 } from 'react'
 import Image from 'next/image'
-import { motion, MotionProps, HTMLMotionProps } from 'framer-motion'
+import { motion, HTMLMotionProps } from 'framer-motion'
 
 import { PlayerDto } from '@/Dtos/playerDto'
 import { Score } from './Score'

@@ -1,4 +1,4 @@
-import { forwardRef, HTMLAttributes, ReactNode } from 'react'
+import { forwardRef, HTMLAttributes } from 'react'
 import { Unbounded } from '@next/font/google'
 import Image, { StaticImageData } from 'next/image'
 import { InstagramLogo, TwitchLogo, TwitterLogo } from 'phosphor-react'
@@ -169,4 +169,4 @@ export const MemberCard = forwardRef<HTMLDivElement, Props>(function MemberCard(
   )
 })
 
-export const MotionMemberCard = motion(MemberCard, { forwardMotionProps: true })
+export const MotionMemberCard = motion(MemberCard)
