@@ -1,7 +1,7 @@
 'use client'
-import { motion } from 'framer-motion'
-import { ArrowFatDown, ArrowFatUp, Stop } from 'phosphor-react'
-import { HTMLAttributes, ReactElement } from 'react'
+// import { motion } from 'framer-motion'
+import { ArrowFatDown, ArrowFatUp, Equals } from 'phosphor-react'
+import { HTMLAttributes } from 'react'
 import { Unbounded } from '@next/font/google'
 
 const unbounded = Unbounded({ subsets: ['latin'] })
@@ -30,7 +30,7 @@ export function Score({ scores, ...rest }: Props) {
         />
       )
     ) : (
-      <Stop weight="fill" size={28} className="animate-pulse text-purple-400" />
+      <Equals weight="fill" size={38} className="animate-pulse text-purple-400" />
     )
 
   return (

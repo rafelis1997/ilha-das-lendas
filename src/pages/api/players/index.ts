@@ -1,7 +1,10 @@
 import puppeteer from 'puppeteer'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { prisma } from '@/lib/prisma'
+import { PlayerDto } from "@/Dtos/playerDto";
+import { Optional } from "@/pages/api/types/Optional";
 
+type playerOptional = Optional<PlayerDto, "playerPhoto" | "playerNick" | "playerName">
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -12,7 +15,7 @@ export default async function handler(
 
   if (req.method === 'POST') {
     let teamsRaw = []
-    let players = []
+    let players: Omit<playerOptional, "id" | "teamId" | "score" | "mainRoaster">[] = []
 
     const pupp = async () => {
       const browser = await puppeteer.launch()
@@ -45,7 +48,7 @@ export default async function handler(
           element.map((playerCard) => {
             const playerInfo = playerCard.querySelector('.info')
             const playerPhotoStyle = playerInfo?.getAttribute('style')
-            const playerPhotoLink = playerPhotoStyle?.split('"')[1]
+            const playerPhoto = playerPhotoStyle?.split('"')[1]
             const playerRoleSVg = playerInfo?.querySelector('.icon')
             const tempDiv = document.createElement('div')
             tempDiv.appendChild(playerRoleSVg as Element)
@@ -56,7 +59,7 @@ export default async function handler(
               playerInfo?.querySelector('.real-name')?.innerHTML
 
             return {
-              playerPhotoLink,
+              playerPhoto,
               playerRole,
               playerNick,
               playerName,
@@ -85,7 +88,7 @@ export default async function handler(
                 },
                 data: {
                   playerName: player.playerName,
-                  playerPhoto: player.playerPhotoLink,
+                  playerPhoto: player.playerPhoto,
                   playerRole: player.playerRole,
                   playerNick: player.playerNick,
                   teamId: teamData?.id,
@@ -95,7 +98,7 @@ export default async function handler(
               await prisma.player.create({
                 data: {
                   playerName: player.playerName,
-                  playerPhoto: player.playerPhotoLink!,
+                  playerPhoto: player.playerPhoto!,
                   playerRole: player.playerRole,
                   playerNick: player.playerNick,
                   teamId: teamData?.id,
