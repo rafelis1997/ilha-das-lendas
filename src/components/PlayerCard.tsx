@@ -119,7 +119,7 @@ interface Props extends HTMLMotionProps<'div'> {
   teamLogo: string
   teamColor: COLORS
   isSelected: boolean
-  setPlayerSelection?: (playerNick: PlayerDto | null) => void
+  setPlayerSelection: (playerNick: PlayerDto | null) => void
 }
 
 export function PlayerCard({
@@ -127,7 +127,7 @@ export function PlayerCard({
   teamLogo,
   teamColor,
   isSelected,
-  setPlayerSelection,
+  setPlayerSelection = () => null,
   ...rest
 }: Props) {
   const svgRole = JSON.parse(player.playerRole)
